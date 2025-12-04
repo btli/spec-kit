@@ -89,7 +89,29 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 **Output**: data-model.md, /contracts/*, quickstart.md, agent-specific file
 
+### Phase 2: Project Management Setup
+
+**Prerequisites:** Phase 1 complete
+
+1. **Create Plane epic for feature**:
+   - Use the `plane-project-management` skill
+   - Create a parent issue/epic with:
+     - Title: Feature name from spec
+     - Description: Feature overview and acceptance criteria
+     - Labels: feature, spec-driven
+   - Record the epic ID in plan.md header
+
+2. **Verify secrets configuration**:
+   - Check if feature requires any secrets/credentials
+   - If yes, document required secrets in plan.md
+   - Verify Phase app configuration exists
+   - Add setup tasks for secrets provisioning
+
+**Output**: Plane epic created, secrets requirements documented
+
 ## Key rules
 
 - Use absolute paths
 - ERROR on gate failures or unresolved clarifications
+- MUST create Plane epic before completing plan phase
+- MUST document any secrets requirements for Phase provisioning

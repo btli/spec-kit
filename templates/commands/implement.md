@@ -128,7 +128,24 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Suggest next steps if implementation cannot proceed
    - **IMPORTANT** For completed tasks, make sure to mark the task off as [X] in the tasks file.
 
-9. Completion validation:
+9. **Plane issue status updates** (NON-NEGOTIABLE):
+   - Use the `plane-project-management` skill for all status updates
+   - **Before starting a task**: Update Plane issue status to "In Progress"
+   - **After completing a task**: Update Plane issue status to "Done"
+   - **On task failure**: Update Plane issue with error details, keep status "In Progress"
+   - **Phase completion**: Add comment to epic summarizing phase completion
+   - If task has `[PLANE-XXX]` ID in tasks.md, use that ID for updates
+   - If no Plane ID exists, create the issue first then update
+
+10. **Secrets handling**:
+   - Use the `phase-secrets` skill for any secrets operations
+   - NEVER hardcode secrets in implementation code
+   - For new secrets requirements discovered during implementation:
+     - Document in plan.md secrets section
+     - Create secret in Phase using appropriate environment
+     - Reference via `phase run` or environment variable injection
+
+11. Completion validation:
    - Verify all required tasks are completed
    - Check that implemented features match the original specification
    - Validate that tests pass and coverage meets requirements

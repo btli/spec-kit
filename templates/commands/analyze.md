@@ -101,6 +101,20 @@ Focus on high-signal findings. Limit to 50 findings total; aggregate remainder i
 - Any requirement or plan element conflicting with a MUST principle
 - Missing mandated sections or quality gates from constitution
 
+#### D2. Phase Secrets Compliance
+
+- Scan for hardcoded secrets patterns (API keys, tokens, passwords, connection strings)
+- Check if plan.md documents required secrets
+- Verify .env files are gitignored (if present)
+- Flag any credentials that should be in Phase but aren't documented
+
+#### D3. Plane Project Management Compliance
+
+- Verify plan.md contains Plane epic ID
+- Check tasks.md for Plane issue IDs (`[PLANE-XXX]`)
+- Count tasks without Plane linkage
+- Verify epic-to-task relationship is documented
+
 #### E. Coverage Gaps
 
 - Requirements with zero associated tasks
@@ -141,6 +155,22 @@ Output a Markdown report (no file writes) with the following structure:
 |-----------------|-----------|----------|-------|
 
 **Constitution Alignment Issues:** (if any)
+
+**Phase Secrets Compliance:**
+
+| Check | Status | Details |
+|-------|--------|---------|
+| Secrets documented in plan.md | ✓/✗ | List of documented secrets |
+| No hardcoded credentials | ✓/✗ | Files with potential violations |
+| .env gitignored | ✓/✗/N/A | |
+
+**Plane Project Management Compliance:**
+
+| Check | Status | Details |
+|-------|--------|---------|
+| Epic ID in plan.md | ✓/✗ | PLANE-XXX or missing |
+| Tasks linked to Plane | X/Y | X tasks have IDs, Y total tasks |
+| Unlinked tasks | List | Task IDs without Plane linkage |
 
 **Unmapped Tasks:** (if any)
 

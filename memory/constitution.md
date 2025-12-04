@@ -28,6 +28,68 @@
 [PRINCIPLE_5_DESCRIPTION]
 <!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
 
+## Secrets Management (NON-NEGOTIABLE)
+
+All secrets MUST be managed through Phase (phase.dev). This is NON-NEGOTIABLE.
+
+### Requirements
+
+- **No hardcoded secrets**: API keys, tokens, credentials, and sensitive configuration MUST NOT be committed to the repository
+- **No local .env files in production**: Development may use .env files (gitignored), but production/staging MUST use Phase
+- **Phase CLI integration**: Use `phase run` to inject secrets at runtime or `phase secrets get` for retrieval
+- **Environment separation**: Secrets MUST be organized by environment (development, staging, production)
+
+### Implementation
+
+- Use the `phase-secrets` skill for secrets operations
+- Application: `claude-code` (or project-specific app name)
+- Commands:
+  - `phase secrets list --app APP --env ENV`
+  - `phase secrets get SECRET_NAME --app APP --env ENV`
+  - `phase run --app APP --env ENV -- command`
+
+### Violations
+
+Any code that:
+- Hardcodes secrets or credentials
+- Commits .env files with real values
+- Bypasses Phase for production secrets
+
+Is a CRITICAL constitution violation and MUST be remediated before merge.
+
+## Project Management (NON-NEGOTIABLE)
+
+All work MUST be tracked in Plane (plane.joyful.house). This is NON-NEGOTIABLE.
+
+### Requirements
+
+- **Issue tracking**: Every task from tasks.md MUST have a corresponding Plane issue
+- **Status updates**: Issue status MUST be updated as work progresses (Todo → In Progress → Done)
+- **Traceability**: Commits SHOULD reference Plane issue IDs
+- **Sprint alignment**: Tasks MUST be assigned to appropriate cycles/sprints
+
+### Implementation
+
+- Use the `plane-project-management` skill for Plane operations
+- Workspace: `kaelyn-ai`
+- API authentication via Phase: `phase secrets get PLANE_API_KEY`
+
+### Workflow Integration
+
+- `/speckit.plan`: Create epic/parent issue for feature
+- `/speckit.tasks`: Create child issues for each task, linked to parent
+- `/speckit.implement`: Update issue status as tasks complete
+- `/speckit.analyze`: Verify Plane issue coverage
+
+### Violations
+
+Any implementation that:
+- Creates tasks without corresponding Plane issues
+- Completes work without updating issue status
+- Merges without issue traceability
+
+Is a constitution violation and MUST be remediated.
+
 ## [SECTION_2_NAME]
 <!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
 

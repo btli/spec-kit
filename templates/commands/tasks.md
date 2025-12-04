@@ -55,13 +55,24 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Parallel execution examples per story
    - Implementation strategy section (MVP first, incremental delivery)
 
-5. **Report**: Output path to generated tasks.md and summary:
+5. **Sync tasks to Plane**:
+   - Use the `plane-project-management` skill
+   - For each task in tasks.md:
+     - Create a Plane issue linked to the feature epic (from plan.md)
+     - Set issue title: Task description
+     - Set issue labels: task, phase-N (where N is the phase number)
+     - Add [P] marker to labels if parallelizable
+     - Link user story tasks to their story label (US1, US2, etc.)
+   - Update tasks.md with Plane issue IDs in format: `[PLANE-XXX]`
+
+6. **Report**: Output path to generated tasks.md and summary:
    - Total task count
    - Task count per user story
    - Parallel opportunities identified
    - Independent test criteria for each story
    - Suggested MVP scope (typically just User Story 1)
    - Format validation: Confirm ALL tasks follow the checklist format (checkbox, ID, labels, file paths)
+   - Plane sync status: Number of issues created, epic linkage confirmed
 
 Context for task generation: {ARGS}
 
